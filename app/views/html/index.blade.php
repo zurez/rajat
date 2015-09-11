@@ -117,7 +117,7 @@
         <div class="header-content">
             <div class="header-content-inner">
                 <br>
-                <img src="img/dulogo.jpg" alt = "DU Logo">
+                <img src="img/dulogo.jpg.png" alt = "DU Logo">
                 <h1>DELHI UNIVERSITY COMMUNITY RADIO 90.4MHz</h1>
                 <hr>
                 <p>"Some people believe in God, I believe in music. Some people pray, I turn up the radio." - 30 Seconds to Mars <br>
@@ -138,20 +138,20 @@
    
 					<ul style="list-style-type:circle">
 					
-					
-					
-					<li><a href="https://www.google.com/">Radio Coverage of Sarang 2015 by Saniya Khan</li>
-					<br>
-					<li><a href="https://www.google.com/">Antardhwani 2015 </a></li>
+					 
+					@foreach ($a as $b)
+					<li><a href="{{$b->link}}">{{$b->notification}}</li>
+					<br>  
+                    <!-- <li><a href="https://www.google.com/">Antardhwani 2015 </a></li>
 					<br>
 					<li><a href="https://www.google.com/">GYANODAYA V</li>
 					<br>
 					<li><a href="https://www.google.com/">Listen Live Commentary of Antardhwani</li>
 					<br>
 					<li><a href="https://www.google.com/">Sub-Commitee has been formed to deal with the matters of DUCR by University administration</li>
-					</ul>
-					
-					</marquee></p>
+					</ul> -->
+					@endforeach
+					</marquee></p> 
 
           
 
@@ -213,17 +213,17 @@ We are also providing internships and time to time training programmes, so that 
                     </div>
                 </div>-->
                 <div class="col-lg-4 col-md-6 text-center">
-                    <a href="http://web.du.ac.in/DUCR/DUCRCICSP/player1.html"><div class="service-box">
+                    <a href="archive"><div class="service-box">
                         
-                        <i class="fa fa-4x fa-diamond wow bounceIn text-primary"></i></a>
-                        <h3>Recent ones</h3>
+                        <i class="fa fa-4x fa-diamond wow bounceIn text-primary"></i>
+                        <h3>Recent ones</h3></a>
                         <p class="text-muted">Don't worry if you missed the live programm. Listen to them now.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 text-center">
-                    <a href="http://ducr.du.ac.in/archive.html"><div class="service-box">
-                        <i class="fa fa-4x fa-heart wow bounceIn text-primary" data-wow-delay=".3s"></i></a>
-                        <h3>Loved Archives</h3>
+                    <a href="archive"><div class="service-box">
+                        <i class="fa fa-4x fa-heart wow bounceIn text-primary" data-wow-delay=".3s"></i>
+                        <h3>Loved Archives</h3></a>
                         <p class="text-muted">Listen to the best of the programms of DUCR in this section.</p>
                     </div>
                 </div>
@@ -234,10 +234,9 @@ We are also providing internships and time to time training programmes, so that 
     <section class="no-padding" id="portfolio">
         <div class="container-fluid">
             <div class="row no-gutter">
-            @foreach($images as $image)
                 <div class="col-lg-4 col-sm-6">
-                    <a href="html/gallery/image.html" target="_blank" class="portfolio-box">
-                        <img src="galleryphotos/{{$image->photoname}}" class="img-responsive" alt="">
+                    <a href="{{ URL::to('gallery') }}" target="_blank" class="portfolio-box">
+                        <img src="img/h1.jpg" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
@@ -250,11 +249,10 @@ We are also providing internships and time to time training programmes, so that 
                         </div>
                     </a>
                 </div>
-            @endforeach
                 
-                {{-- <div class="col-lg-4 col-sm-6">
-                    <a href="html/gallery/image.html" target="_blank" class="portfolio-box">
-                        <img src="img/portfolio/an2015.jpg" class="img-responsive" alt="">
+                <div class="col-lg-4 col-sm-6">
+                    <a href="{{ URL::to('gallery') }}" target="_blank" class="portfolio-box">
+                        <img src="img/header33.jpg" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
@@ -268,8 +266,8 @@ We are also providing internships and time to time training programmes, so that 
                     </a>
                 </div>
                 <div class="col-lg-4 col-sm-6">
-                    <a href="html/gallery/image.html" target="_blank" class="portfolio-box">
-                        <img src="img/portfolio/vc.jpg" class="img-responsive" alt="">
+                    <a href="{{ URL::to('gallery') }}" target="_blank" class="portfolio-box">
+                        <img src="img/h1.jpg" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
@@ -283,8 +281,8 @@ We are also providing internships and time to time training programmes, so that 
                     </a>
                 </div>
                 <div class="col-lg-4 col-sm-6">
-                    <a href="html/gallery/image.html" target="_blank" class="portfolio-box">
-                        <img src="img/portfolio/view.jpg" class="img-responsive" alt="">
+                    <a href="{{ URL::to('gallery') }}" target="_blank" class="portfolio-box">
+                        <img src="img/header33.jpg" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
@@ -298,8 +296,8 @@ We are also providing internships and time to time training programmes, so that 
                     </a>
                 </div>
                 <div class="col-lg-4 col-sm-6">
-                    <a href="html/gallery/image.html" target="_blank" class="portfolio-box">
-                        <img src="img/portfolio/op.jpg" class="img-responsive" alt="">
+                    <a href="{{ URL::to('gallery') }}" target="_blank" class="portfolio-box">
+                        <img src="img/h1.jpg" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
@@ -313,8 +311,8 @@ We are also providing internships and time to time training programmes, so that 
                     </a>
                 </div>
                 <div class="col-lg-4 col-sm-6">
-                    <a href="html/gallery/image.html" target="_blank" class="portfolio-box">
-                        <img src="img/portfolio/tonst.jpg" class="img-responsive" alt="">
+                    <a href="{{ URL::to('gallery') }}" target="_blank" class="portfolio-box">
+                        <img src="img/header33.jpg" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
@@ -326,7 +324,7 @@ We are also providing internships and time to time training programmes, so that 
                             </div>
                         </div>
                     </a>
-                </div> --}}
+                </div> 
             </div>
         </div>
     </section>
@@ -371,7 +369,7 @@ We are also providing internships and time to time training programmes, so that 
                     <p class="foot"><a href="{{ URL::to('privacy') }}" target="_blank">Privacy Policy</a></p>
                 </div>
                 <div class="col-lg-2 text-center">
-                    <p class="foot"><a href="{{ URL::to('credits') }}" target="_blank">Credits</a></p>
+                    <p class="foot"><a href="{{ URL::to('credit') }}" target="_blank">Credits</a></p>
                 </div>
                 <div class="col-lg-2 text-center">
                     <p class="foot"><a href="{{ URL::to('adminpanel') }}" target="_blank">Admin</a></p>

@@ -42,7 +42,7 @@ class ArchiveController extends \BaseController {
 	public function education ()
 	{
 		$data= Archive::where('tag','education')->get();
-	
+
 		return View::make('html.sub.archivef',compact('data'));
 	}
 	public function entertainment ()
@@ -65,7 +65,8 @@ class ArchiveController extends \BaseController {
 		return View::make('html.sub.archivef',compact('data'));
 	}
 	public function all ()
-	{	$data= Archive::all();
+	{	//$data= Archive::all()->get();
+		$data= DB::table('archive')->get();
 		return View::make('html.sub.archivef',compact('data'));
 	}
 }

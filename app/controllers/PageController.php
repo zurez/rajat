@@ -4,7 +4,8 @@ class PageController extends \BaseController {
 	public function showindex()
 	{
 		$images = DB::table('gallery')->get();
-		return View::make('html.index')->with(array('images'=>$images));
+		$a = DB::table('notifications')->get();
+		return View::make('html.index', compact('images','a'));;
 	}
 
 	public function committee()
@@ -25,8 +26,8 @@ class PageController extends \BaseController {
 	}
 	public function team()
 	{
-		# code...
-		return View::make('html.sub.adminteam');
+		$data = DB::table('team')->get();
+		return View::make('html.sub.team')->with(array('teams'=>$data));
 	}
 	public function gallery()
 	{

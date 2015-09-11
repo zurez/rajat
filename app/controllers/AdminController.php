@@ -49,7 +49,6 @@ class AdminController extends \BaseController {
 		$caption=Input::get('caption');
 	     $ext = $image->getClientOriginalExtension();
 	     $filename = $image->getClientOriginalName();
-
 	     
 	     Image::make($image)->save('galleryphotos/'.$filename);
 	     Image::make($image)->resize(100,100)->save('galleryphotosthumbnail/'.$filename);	     
@@ -83,7 +82,7 @@ class AdminController extends \BaseController {
 	public function showaddnotif()
 	{
 		
-		return View::make('admin.showaddnotif');
+		return View::make('admin.addnotif');
 	}
 	public function addnotif()
 	{
@@ -95,14 +94,74 @@ class AdminController extends \BaseController {
 	public function showmanagenotif()
 	{
 		$a= DB::table('notifications')->get();
+		
 		return View::make('admin.managenotif')->with(array('a'=>$a));
 	}
-	public function managenotif()
+	public function deletenotif($id)
 	{
-		# code...
+		DB::table('notifications')->where('id',$id)->delete();
+		return Redirect::route('adminpanel');
+	}
+	public function showmanagearchive()
+	{
+		$data= Archive::all();
+		return View::make('admin.archivemanager',compact('data'));
 	}
 	public function managearchive()
 	{
-		return View::make('admin.managearchive');
+		# code...
 	}
+	public function showaddarchiveform()
+	{
+		return View::make('admin.fileupload');
+	}
+	public function deletearchive($id)
+	{
+		DB::table('archive')->where('id',$id)->delete();
+		return Redirect::route('adminpanel');
+	}
+	public function addarchive()
+	{
+		
+		DB::transaction(function(){
+		$file = Input::file('file');
+		$ext=$file->getClientOriginalExtension();
+		$filename= str_random(10).$ext;//Input::file('file')->getClientOriginalName();
+		$destinationpath= 'audio';
+		DB::table('archive')->insert(array('filename'=>$filename,'tag'=>Input::get('tag'),'description'=>Input::get('desc'),'team'=>Input::get('team'),'time'=>time()));
+		Input::file('file')->move($destinationpath, $filename);
+	});//transaction ends
+		return  Redirect::route('adminpanel');
+	}
+	public function showaddteam()
+	{
+		# code...''
+		return View::make('admin.addteam');
+	}
+	public function addteam()
+	{	
+		DB::transaction(function(){
+			$file= Input::file('file');
+			$ext= $file->getClientOriginalExtension();
+
+			$filename=str_random(10).$ext;
+			$destinationpath='team';
+			
+			Image::make(Input::file('file'))->resize(100,100)->save('team/'.$filename."_thumbnail");	
+			$file->move($destinationpath,$filename);
+			$member= new Team;
+			$member->name= Input::get('name');
+			$member->bio=Input::get('desc');
+			$member->position=Input::get('posit');
+			$member->tag=Input::get('tag');
+			$member->image_path=$filename;
+			$member->image_thumb_path=$filename."_thumbnail";
+			$member->link=Input::get('link');
+			$member->save();
+		});
+		
+		return Redirect::route('adminpanel'); 
+	}
+
+
 }

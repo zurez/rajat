@@ -4,9 +4,9 @@
 @foreach ($b as $a)
 
  <div class="box">
-{{Form::checkbox('photo_name[]',$a)}}
+<!-- {{Form::checkbox('photo_name[]',$a)}} -->
    			
-{{ HTML::image('galleryphotos/'.$a) }}
+{{ HTML::image('galleryphotosthumbnail/'.$a) }}
 {{Form::checkbox('photo_name[]',$a)}}
 @endforeach
 @endforeach

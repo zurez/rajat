@@ -44,10 +44,24 @@ Route::get('uploadphoto',array('as'=>'uploadphoto','uses'=>'AdminController@show
 Route::post('uploadphoto','AdminController@upload_photo');
 Route::get('managephotos',array('as'=>'managephotos','uses'=>'AdminController@showphotos'));
 Route::post('managephotos',array('as'=>'managephotos','uses'=>'AdminController@deletephoto'));
+
+//Notification Table
 Route::get('managenotif',array('as'=>'managenotif','uses'=>'AdminController@showmanagenotif'));
-Route::post('managenotif',array('as'=>'managenotif','uses'=>'AdminController@managenotif'));
+Route::get('delete/{id}/notif',array('as'=>'deletenotif','uses'=>'AdminController@deletenotif'));
 Route::get('addnotif',array('as'=>'managenotif','uses'=>'AdminController@showaddnotif'));
 Route::post('addnotif',array('as'=>'managenotif','uses'=>'AdminController@addnotif'));
-Route::get('managearchive',array('as'=>'managearchive','uses'=>'AdminController@managearchive'));
-Route::get('managearchive',array('as'=>'managearchive','uses'=>'AdminController@managearchive'));
+
+
+//Archive Table
+Route::get('managearchive',array('as'=>'managearchive','uses'=>'AdminController@showmanagearchive'));
+//Route::get('managearchive',array('as'=>'managearchive','uses'=>'AdminController@managearchive'));
+Route::get('delete/{id}/archive',array('as'=>'deletearchive','uses'=>'AdminController@deletearchive'));
+Route::get('addarchive',array('as'=>'addarchive','uses'=>'AdminController@showaddarchiveform'));
+Route::post('addarchive',array('as'=>'addarchive','uses'=>'AdminController@addarchive'));
+
+//Team Table & Manage Team members
+Route::get('addteam',array('as'=>'addteam','uses'=>'AdminController@showaddteam'));
+Route::post('addteam',array('as'=>'addteam','uses'=>'AdminController@addteam'));
+
+
 });
